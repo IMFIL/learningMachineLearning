@@ -1,0 +1,96 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1561\cocoasubrtf400
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\margl1440\margr1440\vieww28300\viewh17700\viewkind0
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 Measuring the difference between two feature vectors:\
+\
+L0 norm: returns the number of non zero values that are not the same.\
+\ul Example\ulnone : (0,1) and (1,0) would be 2 since 0 != 1 and 1 != 0. (double check this one)\
+\
+L1 norm:  returns the summation of the absolute differences between xi and yi. Is also called the Manhattan distance\
+as the function executes right angles for xi to reach yi. Manhattan is separated in blocks, thus the name.\
+\ul Example: \ulnone (0,1) and (1,3) is 3 as you need to go right one and then two up (think grid)  \
+\
+L2 norm: returns the square root of the summation of the square of each xi difference with yi. This is the shortest path between two points in a geographical plane.\
+Example: (0,1) and (1,0) is sqrt(2) (think diagonal in a grid)\
+\
+LN norm and L-Infinity norms are not useful now.\
+\
+
+\b Parameters
+\b0 : values that are used by the model to gain inference from the data. Think coefficients in front of linear functions: z = Ax + b, the A would be a parameter. It can be used to shift weight of some features in a data set.\
+\
+
+\b Hyperparameter: 
+\b0 properties of model itself not the data, would make more sense if they were called metaparameters\
+\
+
+\b Supervised learning
+\b0 : training set needs labeled data to test against.\
+\
+Each data entry, feature vector, call it x, needs a label, call it y=f(x), also called ground truth. The value of y depends on the value of x. Now, y can be one of few different things. We call a function that fits a feature vector into a single discrete value, a classifier.\
+\
+if y  can result in many naturally ordered values, then y is called a regressor.\
+\
+The goal of supervised learning is to find the best combination of parameters to apply to your initial model, call it g(x). So g(x|Theta) where theta are the parameters. To find the best combination of parameters theta, g(x|theta) is compared to the ground truth and the difference is the cost. The goal of supervised learning is to reduce the cost.\
+\
+You can brute force all of the parameter space to find the best possible combination of parameters, but that run time will be horrible.\
+After executing an algorithm to find the best parameters, you can use your new model on test data. \
+\
+\
+
+\b Unsupervised Learning:  
+\b0 Unsupervised learning is about inferring from data without labels. This is done by clustering the data in buckets so that each bucket item has a common feature with all other elements in that bucket.\
+\
+
+\b Reinforcement Learning: 
+\b0 Supervised and unsupervised learning are both forms of teacher-student learnings, one where there is a direct teacher ie labels and the other one, the student learns on its own. There is a third learning category called reinforcement learning, where the system changes its parameters based on the reaction of the ecosystem upon a certain combination of parameters, think chess beating algorithm.\
+\
+
+\b TensorFlow
+\b0 : think of computations as nodes and edges as the flow of data. The resulting graph will be a computational graph.\
+\
+
+\b Regression
+\b0 : how to best fit a curve to summarize data. Regression can take either discrete or continuous data, but will always output\
+continuous data.\
+\
+
+\b Linear Regression
+\b0 : linear regression is fitting data to a linear curve under the Y=Ax+b model. The A  and b in this case would be the parameters of the model, running a learning algorithm on some data would result in A and b changing. if M=\{y=wx | w element reals\}\
+then M is the set of all linear functions that have a real coefficient multiplying the input. The goal of a regression algorithm is to find w*\
+such that the cost (difference between input and output) is minimal.\
+\
+
+\b Basic notes
+\b0 : A regression algorithm may not always output a single value, it can also be multivariate. The way you find the best parameters for a model is called the cost function.\
+\
+
+\b Variance
+\b0 : indicates how sensitive a prediction is to the training set that was used. The lower the better as the higher the variance, the more youre model depends on the data you inputted and less can it be used to make predictions about unseen inputs. How badly your responses fluctuate.\
+\
+
+\b Bias
+\b0 : indicates the strength of assumptions made about the training dataset. The lower the better. How badly the response is offset from the ground-truth.\
+\
+Having a high variance and low bias means that your model is too flexible, meaning that your model will overfit your data and basically just memorize it, making it a horrible predictor. Having a low variance and high bias means that your model is too strict for the data, meaning that you assumed some things that should not have been assumed in your model. If both youre training and test results are bad then you are underfitting, if your training is good and test is bad then you are overftting your model to your data. This is the reason why you partition your data into two sets, one for training and one for testing. \
+\
+When you are optimizing a model, a variable needs to be used, that variable needs to be declared as such:\
+\ul var = tf.Variable(0.0, name=\'91weights\'92)\
+\ulnone This will make sure that the optimizer will change the variables that are weights.\
+\
+\
+
+\b Epoch: 
+\b0 An epoch is a single training instance of  the model. Basically 1 epoch is when the model tries to take another value for a parameter, the way the parameter grows is called the learning rate.\
+\
+\
+\
+\
+\
+\
+\
+}
