@@ -76,7 +76,7 @@ such that the cost (difference between input and output) is minimal.\
 \b Bias
 \b0 : indicates the strength of assumptions made about the training dataset. The lower the better. How badly the response is offset from the ground-truth.\
 \
-Having a high variance and low bias means that your model is too flexible, meaning that your model will overfit your data and basically just memorize it, making it a horrible predictor. Having a low variance and high bias means that your model is too strict for the data, meaning that you assumed some things that should not have been assumed in your model. If both youre training and test results are bad then you are underfitting, if your training is good and test is bad then you are overftting your model to your data. This is the reason why you partition your data into two sets, one for training and one for testing. \
+Having a high variance and low bias means that your model is too flexible, meaning that your model will overfit your data and basically just memorize it, making it a horrible predictor. Having a low variance and high bias means that your model is too strict for the data, meaning that you assumed some things that should not have been assumed in your model. If both youre training and test results are bad then you are underfitting, if your training is good and test is bad then you are overfitting your model to your data. This is the reason why you partition your data into two sets, one for training and one for testing. \
 \
 When you are optimizing a model, a variable needs to be used, that variable needs to be declared as such:\
 \ul var = tf.Variable(0.0, name=\'91weights\'92)\
@@ -91,7 +91,21 @@ When you are optimizing a model, a variable needs to be used, that variable need
 \b polynomial regression
 \b0 : It is very rare that the correlation between data is linear, calling for a polynomial relationship between the data.\
 \
+
+\b Regularization
+\b0 : When we overcomplicate our model, we are prone to overfitting the model and make it memorize the input data. To combat this, we use regularization. Regularization is applied to the cost function which is how we determine how close our approximation and the ground truth are. By regularizing our model, we reduce the variance of it and make it fit the data.\
 \
+
+\b cost function
+\b0 : function that determines the difference between the ground truth and our current estimation.  \
+\
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 {{\NeXTGraphic Screen Shot 2018-05-13 at 3.19.22 AM.png \width8860 \height1480 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 \
+Here we are using the L2 norm to calculate the difference, or cost. We are also adding another term. That term is what we call a regularizing term. It will multiply the sum of the squares of all parameters by a regularization parameter. Meaning that the cost will be much higher for high parameters. This in turn will make the parameters small and regularized, so that the model sheds out the noise.\
 \
 \
 \
